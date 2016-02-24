@@ -879,7 +879,7 @@ function imgCssGps(e){
 		var lonRef = EXIF.getTag(e, "GPSLongitudeRef");
 		var latRef = EXIF.getTag(e, "GPSLatitudeRef"); 
 		if (lon && lon!="") {	
-			var lonPretty = metatodecimal(parseInt(lon.split(",",3)[0]),parseInt(lon.split(",",3)[1]),parseInt(lon.split(",",3)[2]),lonRef);
+			var lonPretty = metatodecimal(parseInt(String(lon).split(",",3)[0]),parseInt(String(lon).split(",",3)[1]),parseInt(String(lon).split(",",3)[2]),lonRef);
 			alert(lon+"/"+lonRef+" : "+lat+"/"+latRef);
 			alert(lonPretty);
 			e.style.borderColor = 'red';
