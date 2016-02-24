@@ -878,6 +878,7 @@ function imgCssGps(e){
 		var lat = EXIF.getTag(e, "GPSLatitude");
 		var lonRef = EXIF.getTag(e, "GPSLongitudeRef");
 		var latRef = EXIF.getTag(e, "GPSLatitudeRef"); 
+		console.log(e);
 		if (lon && lon!="") {
 			var lonPretty = metatodecimal(parseInt(String(lon).split(",",3)[0]),(String(lon).split(",",3)[1]),parseInt(String(lon).split(",",3)[2]),lonRef);
 			var latPretty = metatodecimal(parseInt(String(lat).split(",",3)[0]),(String(lat).split(",",3)[1]),parseInt(String(lat).split(",",3)[2]),latRef);
