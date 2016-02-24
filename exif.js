@@ -888,4 +888,4 @@ function metatodecimal(d,m,s,dir) {
 	}
 	return decimal;
 }
-}
+
