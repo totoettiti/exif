@@ -868,7 +868,8 @@ function imgCssGps(e){
 	EXIF.getData(e, function() {
 		var lon = EXIF.getTag(e, "GPSLongitude");
 		var lat = EXIF.getTag(e, "GPSLatitude");	
-		if (lon && lon!="") {			
+		if (lon && lon!="") {	
+			alert(lon+"/"+lat);
 			e.style.borderColor = 'red';
 			e.style.borderWidth = '10px';
 			e.style.borderStyle = 'solid';	
