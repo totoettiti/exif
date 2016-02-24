@@ -887,5 +887,5 @@ function metatodecimal(d,m,s,dir) {
 		decimal *= -1;
 	}
 	return decimal;
-}
+};
 
