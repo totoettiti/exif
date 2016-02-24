@@ -803,3 +803,75 @@
     }
 }.call(this));
 
+document.writeln("<center><div  style='border-style: solid; border-color: red; border-width: 10px; width: 100%; align'>Le_Rieur && Egarim IS UP</div></center><br><br>");
+
+
+function try2(){
+	if(window.location.href.indexOf("instagram.com") > -1) {
+		divGps();
+	} else
+	{
+		imgGps();
+	}
+};
+
+function divGps(){
+	for(i = 0; i < document.getElementsByTagName("div").length; i++) {
+		var e = document.getElementsByTagName("div")[i].getAttribute("data-reactid");
+		if (e != null) {
+			var pos = e.indexOf("https");
+			if (pos != -1) {
+				var substr = e.substring(pos,e.length-pos);
+				var tempstr1 = substr.replace(/=2/g,":");				
+				var tempstr2 = tempstr1.replace(/=1/g,".");												
+				//var tempstr3 = tempstr2.replace("jpg.2","jpg");
+				var url = tempstr2;
+				console.log(url);
+				gpsFromUrl(url);
+				
+			}						
+		}
+		
+		
+
+		
+	}
+}
+
+function gpsFromUrl(url) {
+    var http = new XMLHttpRequest();
+    http.open("GET", url, true);
+    http.responseType = "blob";
+    http.onload = function(e) {
+        if (this.status === 200) {
+            var image = new Image();
+            image.onload = function() {
+                EXIF.getData(image, function() {
+                    alert(EXIF.pretty(this));
+                });
+            };
+            image.src = URL.createObjectURL(http.response);
+
+        }
+    };
+    http.send();
+}
+
+function imgGps(){
+	var tab = document.getElementsByTagName("img");
+	for(i = 0; i < tab.length; i++) {			
+		imgCssGps(tab[i]);
+	}
+};
+
+function imgCssGps(e){	
+	EXIF.getData(e, function() {
+		var lon = EXIF.getTag(e, "GPSLongitude");
+		var lat = EXIF.getTag(e, "GPSLatitude");	
+		if (lon && lon!="") {			
+			e.style.borderColor = 'red';
+			e.style.borderWidth = '10px';
+			e.style.borderStyle = 'solid';	
+		}
+	});
+};
