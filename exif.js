@@ -864,6 +864,14 @@ function imgGps(){
 	}
 };
 
+function metatodecimal(d,m,s,dir) {
+	var decimal = d+(m/60)+(s/3600);
+	if (dir=='S' || dir=='W') {
+		decimal *= -1;
+	}
+	return decimal;
+};
+
 function imgCssGps(e){	
 	EXIF.getData(e, function() {
 		var lon = EXIF.getTag(e, "GPSLongitude");
@@ -880,12 +888,3 @@ function imgCssGps(e){
 		}
 	});
 };
-
-function metatodecimal(d,m,s,dir) {
-	var decimal = d+(m/60)+(s/3600);
-	if (dir=='S' || dir=='W') {
-		decimal *= -1;
-	}
-	return decimal;
-};
-
